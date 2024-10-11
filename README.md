@@ -97,6 +97,7 @@
 - [2 Двумерные динамические массивы.](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/2_lab)
 - [3. Принцип инкапсуляции. Описание объектного типа](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/3_lab)
 - [4. SOLID Создание архитектуры на примере реализации кофемашины](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/4_lab)
+- [7. Реализация списка. Технологии ООП](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/7_lab)
 
 [САОД Структуры и алгоритмы обработки данных](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD)
 - [1.Задания по построению двоичного дерева и обходам дерева](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/SAOD/1_lab)
