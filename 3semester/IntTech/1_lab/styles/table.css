@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color:cadetblue;
+}
+
+.settings-view-memes {
+    margin-bottom: 20px;
+}
+
+.view-memes {
+    text-align: center;
+}
+
+.view-memes__table {
+    margin: 0 auto; 
+    border-collapse: collapse;/*убрать границы*/
+}
+
+.view-memes__image-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.view-memes__item {
+    margin: 0 10px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.view-memes__title {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 36px;
+    text-align: center;
+}

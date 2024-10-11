@@ -1,0 +1,44 @@
+body {
+    background-image: url('../image/1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: blueviolet;
+    animation: changeBackground 15s linear infinite;
+}
+
+@keyframes changeBackground {
+    0% {
+        background-image: url('../image/1.jpg');
+    }
+
+    /* x % duration*/
+    25% {
+        background-image: url('../image/2.jpg');
+    }
+
+    50% {
+        background-image: url('../image/3.jpg');
+    }
+
+    75% {
+        background-image: url('../image/2.jpg');
+    }
+
+    100% {
+        background-image: url('../image/1.jpg');
+    }
+}
+
+/* styles for elements with the class 'dotted-list'. */
+.dotted-list {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.dotted-list li {
+    margin-left: 20px;
+}
+
+button {
+    margin: 10px;
+}

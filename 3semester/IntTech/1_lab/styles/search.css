@@ -1,0 +1,27 @@
+.search-engines {
+    text-align: center; 
+    margin-top: 30px;
+}
+
+.search-engines ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.search-engines li {
+    margin: 5px 0;
+}
+
+.search-engines a {
+    text-decoration: none; 
+    color: #1a73e8;
+}
+
+.search-engines a:hover {
+    text-decoration: underline; 
+}
+
+.veiw-memes_table-name {
+    text-align: center; 
+}
