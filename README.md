@@ -3,9 +3,9 @@
 Свалочка лаб за время обучения в сибгути
 
 Про рабочее окружение:
-[devenv](https://gitlab.com/cppshizoid/Sibsuits/blob/master/DEVENV.md)
+[devenv](https://gitlab.com/cppshizoid/sibsuits/-/blob/master/DEVENV.md)
 
-[Как собирать проекты](https://gitlab.com/cppshizoid/Sibsuits/blob/master/how_to_build.md)
+[Как собирать проекты](https://gitlab.com/cppshizoid/sibsuits/-/blob/master/how_to_build.md)
 
 ## Первый семак
 
