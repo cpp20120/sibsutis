@@ -3,9 +3,9 @@
 Свалочка лаб за время обучения в сибгути
 
 Про рабочее окружение:
-[devenv](https://gitlab.com/cppshizoid/sibsuits/-/blob/master/DEVENV.md)
+[devenv](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/DEVENV.md)
 
-[Как собирать проекты](https://gitlab.com/cppshizoid/sibsuits/-/blob/master/how_to_build.md)
+[Как собирать проекты](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/how_to_build.md)
 
 ## Первый семак
 
@@ -69,8 +69,8 @@
 - [8 Quick sort](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/SAOD/8_lab)
 - [9 Heap sort](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/SAOD/9_lab)
 - [10 Lits, Stack, Queue](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/SAOD/10_lab)
-- [11 Merge](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/2semester/SAOD/10_lab) (2 lab in 1)
-- [12 Hasing](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/2semester/SAOD/12_lab)
+- [11 Merge](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/SAOD/10_lab) (2 lab in 1)
+- [12 Hasing](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/SAOD/12_lab)
 
 - [Сортировка имени разными сортировками пошагово](https://gitlab.com/cppshizoid/sibsutis/blob/master/2semester/SAOD/name_sort/master.py)
 - [Применение алгоритмов поиска к именам пошагов](https://gitlab.com/cppshizoid/sibsutis/blob/master/2semester/SAOD/name_searchs/master.py)
@@ -84,26 +84,26 @@
 - [Готовое приложение Geometry(Парсер WKT) версия на C++](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/TRPO/geometry_cpp_version)
 - [Курсач: игра жизнь](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/TRPO/GameOfLifeSFML)
 
-[ДМ Дискретная математика](https://gitlab.com/cppshizoid/Sibsuits/blob/master/2semester/DiscreteMath)
-- [Вопросы к экзамену](https://gitlab.com/cppshizoid/Sibsuits/blob/master/2semester/DiscreteMath/ekz.tex)
+[ДМ Дискретная математика](https://gitlab.com/cppshizoid/sibsutis/blob/master/2semester/DiscreteMath)
+- [Вопросы к экзамену](https://gitlab.com/cppshizoid/sibsutis/blob/master/2semester/DiscreteMath/ekz.tex)
 
 Так же в папке содержится [гайд](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/2semester/TRPO) по гиту и сборке, тестированию и дебагу проектов C/C++ который можно найти [здесь](https://cppshizoid.github.io/TRPO/index.html)
 
 ## Третий семак
 
-[Объектно-ориентированное программирование](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP)
+[Объектно-ориентированное программирование](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP)
 
-- [1 Динамическое выделение памяти, работа с указателями](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/1_lab)
-- [2 Двумерные динамические массивы.](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/2_lab)
-- [3. Принцип инкапсуляции. Описание объектного типа](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/3_lab)
-- [4. SOLID Создание архитектуры на примере реализации кофемашины](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/4_lab)
-- [7. Реализация списка. Технологии ООП](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/OOP/7_lab)
+- [1 Динамическое выделение памяти, работа с указателями](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP/1_lab)
+- [2 Двумерные динамические массивы.](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP/2_lab)
+- [3. Принцип инкапсуляции. Описание объектного типа](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP/3_lab)
+- [4. SOLID Создание архитектуры на примере реализации кофемашины](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP/4_lab)
+- [7. Реализация списка. Технологии ООП](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP/7_lab)
 
 [САОД Структуры и алгоритмы обработки данных](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD)
-- [1.Задания по построению двоичного дерева и обходам дерева](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/SAOD/1_lab)
-- [2.Задания по построению идеально сбалансированного дерева поиска ИСДП](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/SAOD/2_3_lab)
-- [3.Задания по построению случайного дерева поиска СДП](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/SAOD/2_3_lab)
-- [4. Задания по удалению из случайного дерева поиска СД](https://gitlab.com/cppshizoid/Sibsuits/-/blob/master/3semester/SAOD/4_lab)
+- [1.Задания по построению двоичного дерева и обходам дерева](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/1_lab)
+- [2.Задания по построению идеально сбалансированного дерева поиска ИСДП](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/2_3_lab)
+- [3.Задания по построению случайного дерева поиска СДП](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/2_3_lab)
+- [4. Задания по удалению из случайного дерева поиска СД](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/4_lab)
 
 [Интернет технологии](https://gitlab.com/cppshizoid/-/blob/master/3semester/IntTech)
 - [1. HTML CSS](https://gitlab.com/cppshizoid/-/blob/master/3semester/IntTech/1_lab)
