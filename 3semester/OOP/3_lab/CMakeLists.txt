@@ -24,10 +24,14 @@ file(GLOB SOURCE_FILES src/*.cpp src/utils/*.cpp)
 file(GLOB HEADER_FILES include/*.hpp)
 add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
 
-target_compile_options(
-  ${PROJECT_NAME}
-  PRIVATE -Wall
-          -Wextra)
+if(MSVC)
+ set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od /EHsc /W3 /WX /RTC1")
+ set(CMAKE_CXX_FLAGS_RELEASE "/Ox /EHsc /W3 /WX /RTC1 /GS")
+else()
+ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+ set(CMAKE_CXX_FLAGS_DEBUG "-g")
+ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+endif()
 find_program(CLANG_FORMAT "clang-format")
 if(CLANG_FORMAT)
   add_custom_target(format COMMAND ${CLANG_FORMAT} -i ${SOURCE_FILES})

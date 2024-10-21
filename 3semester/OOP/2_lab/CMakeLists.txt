@@ -23,11 +23,14 @@ endif()
 file(GLOB SOURCE_FILES *.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
-target_compile_options(
-  ${PROJECT_NAME}
-  PRIVATE $<$<CONFIG:DEBUG>:-Wall
-          -Wextra
-          -fsanitize=address>)
+if(MSVC)
+ set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od /EHsc /W3 /WX /RTC1")
+ set(CMAKE_CXX_FLAGS_RELEASE "/Ox /EHsc /W3 /WX /RTC1 /GS")
+else()
+ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+ set(CMAKE_CXX_FLAGS_DEBUG "-g")
+ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+endif()
 
 find_program(CLANG_FORMAT "clang-format")
 if(CLANG_FORMAT)
