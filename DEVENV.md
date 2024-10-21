@@ -8,6 +8,12 @@ chmod +x setup.sh
 ./install_packages.sh macos    # для macOS
 ```
 
+```sh
+./setup.ps1 # для windows
+```
+
+Вам нужно будет выбрать нужные компоненты для Visual Studio(указаны ниже)
+
 ## C
 - Linux
 ```sh
