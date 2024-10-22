@@ -42,11 +42,12 @@ function Install-VisualStudio {
   
   function Install-Vcpkg {
     try {
+      $vcpkgPath = Join-Path -Path $env:USERPROFILE -ChildPath "vcpkg" 
       Invoke-WebRequest -Uri "https://github.com/microsoft/vcpkg/archive/refs/heads/master.zip" -OutFile "vcpkg.zip"
-      Expand-Archive -Path "vcpkg.zip" -DestinationPath "C:\vcpkg"
+      Expand-Archive -Path "vcpkg.zip" -DestinationPath $vcpkgPath
       Remove-Item "vcpkg.zip"
   
-      cd "C:\vcpkg"
+      cd $vcpkgPath
   
       .\bootstrap-vcpkg.bat
       .\vcpkg integrate install
@@ -55,7 +56,7 @@ function Install-VisualStudio {
       Write-Error "Error installing Vcpkg: $($_.Exception.Message)"
       exit
     }
-  }
+  }  
   
   function Install-Git {
     try {
