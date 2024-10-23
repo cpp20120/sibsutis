@@ -103,7 +103,9 @@
 - [1.Задания по построению двоичного дерева и обходам дерева](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/1_lab)
 - [2.Задания по построению идеально сбалансированного дерева поиска ИСДП](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/2_3_lab)
 - [3.Задания по построению случайного дерева поиска СДП](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/2_3_lab)
-- [4. Задания по удалению из случайного дерева поиска СД](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/4_lab)
+- [4.Задания по удалению из случайного дерева поиска СД](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/4_lab)
+- [5.Задания по построению AVL дерева](https://gitlab.com/cppshizoid/sibsutis/-/tree/master/3semester/SAOD/5_lab)
+- [6.Задания по удалению из AVL дерева](https://gitlab.com/cppshizoid/sibsutis/-/tree/master/3semester/SAOD/6_lab)
 
 [Интернет технологии](https://gitlab.com/cppshizoid/-/blob/master/3semester/IntTech)
 - [1. HTML CSS](https://gitlab.com/cppshizoid/-/blob/master/3semester/IntTech/1_lab)
