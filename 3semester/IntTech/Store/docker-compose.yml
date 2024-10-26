@@ -1,0 +1,10 @@
+﻿services:
+  postgres:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: mocassini
+      POSTGRES_PASSWORD: mocassini
+      POSTGRES_DB: mocassini
+ 
