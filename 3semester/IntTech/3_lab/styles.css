@@ -1,0 +1,120 @@
+:root {
+    --background: #1E1E28;
+    --surface: #302D41;
+    --text-color: #D9E0EE;
+    --subtle-text: #6E6C7E;
+    --primary: #96CDFB;
+    --secondary: #F5A97F;
+    --accent: #DDB6F2;
+    --error: #E28A9D;
+  }
+  
+  /* Общие стили */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h2 {
+    color: var(--accent);
+  }
+  
+  /* Универсальный стиль для кнопок и полей ввода */
+  button, input, select {
+    background-color: var(--surface);
+    color: var(--text-color);
+    border: 1px solid var(--subtle-text);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  /* Стиль для интерактивных элементов */
+  button:hover, input:focus, select:focus {
+    background-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 8px var(--secondary);
+  }
+  
+  button:active {
+    background-color: var(--accent);
+  }
+  
+  /* Отдельный стиль для кнопок */
+  button {
+    cursor: pointer;
+    border: none;
+  }
+  
+  /* Формы и секции */
+  form {
+    background-color: var(--surface);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  input[type="date"] {
+    appearance: none;
+    cursor: pointer;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  .section h2 {
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: var(--surface);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+  }
+  
+  #balance-result, #filter-result {
+    font-size: 18px;
+    color: var(--secondary);
+    font-weight: bold;
+  }
+
+  /* Стили для поля даты */
+input[type="date"] {
+    appearance: none; /* Сброс стандартного стиля */
+    background-color: var(--surface);
+    color: var(--text-color);
+    border: 1px solid var(--subtle-text);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+
+  
+  /* Добавление псевдоэлемента для имитации иконки календаря */
+  input[type="date"]::after {
+    content: "📅"; /* Можно заменить на SVG или Font Awesome */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  

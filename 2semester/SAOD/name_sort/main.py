@@ -181,14 +181,14 @@ def main():
     word = input("Enter a word to sort: ")
 
     # # Selection Sort
-    # sorted_word_selection = selection_sort(word)
-    # print("\nWord sorted alphabetically using Selection Sort:",
-    #      sorted_word_selection)
+    sorted_word_selection = selection_sort(word)
+    print("\nWord sorted alphabetically using Selection Sort:",
+          sorted_word_selection)
 
     # # Insertion Sort
-   # sorted_word_insertion = insertion_sort(word)
-   # print("\nWord sorted alphabetically using Insertion Sort:",
-   #       sorted_word_insertion)
+    # sorted_word_insertion = insertion_sort(word)
+    # print("\nWord sorted alphabetically using Insertion Sort:",
+    #       sorted_word_insertion)
 
     # # Bubble Sort
     # sorted_word_bubble = bubble_sort(word)
@@ -207,9 +207,9 @@ def main():
     # print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
 
     # Quick Sort
-    sorted_word_quick = quick_sort(list(word))
-    print("\nWord sorted alphabetically using Quick Sort:",
-          ''.join(sorted_word_quick))
+    # sorted_word_quick = quick_sort(list(word))
+    # print("\nWord sorted alphabetically using Quick Sort:",
+    #      ''.join(sorted_word_quick))
 
 
 if __name__ == "__main__":
