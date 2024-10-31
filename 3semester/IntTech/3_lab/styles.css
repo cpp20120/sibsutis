@@ -9,7 +9,7 @@
     --error: #E28A9D;
   }
   
-  /* Общие стили */
+  /* общие стили */
   body {
     font-family: Arial, sans-serif;
     background-color: var(--background);
@@ -22,7 +22,7 @@
     color: var(--accent);
   }
   
-  /* Универсальный стиль для кнопок и полей ввода */
+  /*  стиль для кнопок и полей ввода */
   button, input, select {
     background-color: var(--surface);
     color: var(--text-color);
@@ -35,7 +35,7 @@
     transition: background-color 0.3s, box-shadow 0.3s;
   }
   
-  /* Стиль для интерактивных элементов */
+  /* стиль для интерактивных элементов */
   button:hover, input:focus, select:focus {
     background-color: var(--primary);
     outline: none;
@@ -46,7 +46,7 @@
     background-color: var(--accent);
   }
   
-  /* Отдельный стиль для кнопок */
+  /* отдельный стиль для кнопок */
   button {
     cursor: pointer;
     border: none;
@@ -93,9 +93,9 @@
     font-weight: bold;
   }
 
-  /* Стили для поля даты */
+  /* стили для поля даты */
 input[type="date"] {
-    appearance: none; /* Сброс стандартного стиля */
+    appearance: none; /* сброс дефолтного стиля */
     background-color: var(--surface);
     color: var(--text-color);
     border: 1px solid var(--subtle-text);
@@ -108,9 +108,9 @@ input[type="date"] {
   
 
   
-  /* Добавление псевдоэлемента для имитации иконки календаря */
+  /* добавление псевдоэлемента для имитации иконки календаря */
   input[type="date"]::after {
-    content: "📅"; /* Можно заменить на SVG или Font Awesome */
+    content: "📅";
     position: absolute;
     right: 10px;
     top: 50%;

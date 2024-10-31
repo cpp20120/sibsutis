@@ -145,6 +145,17 @@ class Budget {
       );
     });
   }
+
+  /**
+   * Удаляет транзакцию из бюджета
+   * @param {number} id - id транзакции, которую нужно удалить
+   */
+  removeTransaction(id) {
+    const index = this.transactions.findIndex(t => t.id === id);
+    if (index !== -1) {
+      this.transactions.splice(index, 1);
+    }
+  }
 }
 
 const budget = new Budget();
@@ -224,6 +235,17 @@ document.getElementById("transaction-form").addEventListener("submit", event => 
 });
 
 /**
+ * Удаляет транзакцию из бюджета
+ */
+document.getElementById("transaction-list").addEventListener("click", event => {
+  if (event.target.tagName === "BUTTON") {
+    const id = parseInt(event.target.getAttribute("data-id"));
+    budget.removeTransaction(id);
+    event.target.parentNode.remove();
+  }
+});
+
+/**
  * Получает баланс за период
  */
 document.getElementById("balance-form").addEventListener("submit", event => {
@@ -269,4 +291,3 @@ document.getElementById("filter-form").addEventListener("submit", event => {
   document.getElementById("balance-result").textContent = `Баланс за период: ${balance}`;
   console.log(balance);
 });
-
