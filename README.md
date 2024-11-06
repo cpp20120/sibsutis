@@ -113,6 +113,7 @@
 [Интернет технологии](https://gitlab.com/cppshizoid/sibsutis/-/tree/master/3semester/IntTech)
 - [1. HTML CSS](https://gitlab.com/cppshizoid/sibsutis/-/tree/master/3semester/IntTech/1_lab)
 - [2. JavaScript](https://gitlab.com/cppshizoid/sibsutis/-/tree/master/3semester/IntTech/2_lab)
+- [3. CRUD](https://gitlab.com/cppshizoid/sibsutis/-/tree/master/3semester/IntTech/3_lab)
 - [Курсач: Интерент магазин](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/IntTech/Store)
 
 ![](https://tokei.rs/b1/github/cppshizoid/sibsutis?category=code)
