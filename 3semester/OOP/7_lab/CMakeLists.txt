@@ -30,7 +30,7 @@ if(MSVC)
  target_link_options(${PROJECT_NAME} PUBLIC "/INCREMENTAL")
 else()
  set(CMAKE_CXX_FLAGS "-Wall -Wextra")
- set(CMAKE_CXX_FLAGS_DEBUG "-g")
+ set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra -Wshadow -Wundef -Who-unused-value")
  set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 endif()
 
