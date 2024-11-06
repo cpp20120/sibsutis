@@ -106,6 +106,8 @@
 - [4.Задания по удалению из случайного дерева поиска СД](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/4_lab)
 - [5.Задания по построению AVL дерева](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/5_lab)
 - [6.Задания по удалению из AVL дерева](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/6_lab)
+- [7.Задания по построению двоичного Б-дерева поиска](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/7_lab)
+- [8.Задания по построению дерева оптимального поиска](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/8_lab)
 - [Курсовая работа](https://gitlab.com/cppshizoid/sibsutis/-/blob/SAOD/CourseWork)
 
 [Интернет технологии](https://gitlab.com/cppshizoid/sibsutis/-/tree/master/3semester/IntTech)
