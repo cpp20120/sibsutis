@@ -3,7 +3,8 @@
 install_fedora () {
  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
  echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
- sudo dnf install -y  gcc  clang  cmake  ninja-build  make  clang-tools-extra qt6-qtbase-devel SFML SFML-devel SDL2-devel SDL2_image-devel dotnet-sdk-8.0 dotnet-runtime-8.0 sqlite sqlite-devel code doxygen gtest-devel python3 python3-pip 
+ sudo dnf install dnf5
+ sudo dnf5 install -y  gcc  clang  cmake  ninja-build  make  clang-tools-extra qt6-qtbase-devel SFML SFML-devel SDL2-devel SDL2_image-devel dotnet-sdk-8.0 dotnet-runtime-8.0 sqlite sqlite-devel code doxygen gtest-devel python3 python3-pip 
 }
 
 install_debian() {
