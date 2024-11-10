@@ -2,10 +2,10 @@
 
 ```sh
 chmod +x setup.sh
-./install_packages.sh fedora   # для Fedora
-./install_packages.sh debian   # для Debian, Ubuntu
-./install_packages.sh arch     # для Arch
-./install_packages.sh macos    # для macOS
+./setup.sh fedora   # для Fedora
+./setup.sh debian   # для Debian, Ubuntu
+./setup.sh arch     # для Arch
+./setup.sh macos    # для macOS
 ```
 
 ```sh
