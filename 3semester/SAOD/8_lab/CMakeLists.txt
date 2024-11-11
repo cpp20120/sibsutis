@@ -18,9 +18,11 @@ if(CCACHE_PROGRAM)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ${CCACHE_PROGRAM})
 endif()
 
-file(GLOB SOURCE_FILES *.cpp)
-file(GLOB HEADER_FILES *.hpp)
-add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
+file(GLOB SOURCE_FILES src/*.cpp)
+file(GLOB HEADER_FILES include/*.hpp)
+
+add_executable(${PROJECT_NAME}  src/main.cpp)
+target_include_directories(${PROJECT_NAME} PRIVATE include)
 
 target_compile_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:-Wall 
                                                -fsanitize=address>)
