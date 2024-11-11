@@ -87,7 +87,7 @@ class BaseTree : public ITree<T> {
   }
 
   static void getArrayElementsFromLeftToRight(TNode* p,
-                                              const std::vector<T>& arr) {
+                                              std::vector<T>& arr) {
     if (p != nullptr) {
       getArrayElementsFromLeftToRight(p->left, arr);
       arr.push_back(p->value);
