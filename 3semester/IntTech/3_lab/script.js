@@ -18,18 +18,20 @@ class IncomeType {
 }
 
 class Expense {
-  constructor(value, type, date) {
+  constructor(value, type, date, currency) {
       this.value = value;
       this.type = type;
       this.date = date;
+      this.currency = currency;
   }
 }
 
 class Income {
-  constructor(value, type, date) {
+  constructor(value, type, date, currency) {
       this.value = value;
       this.type = type;
       this.date = date;
+      this.currency = currency; // Added currency
   }
 }
 
@@ -105,33 +107,30 @@ class Budget {
   calculateBalance(startDate, endDate) {
       let totalIncome = this.incomes
           .filter(income => income.date >= startDate && income.date <= endDate)
-          .reduce((sum, income) => sum + parseFloat(income.value), 0);
-
+          .reduce((sum, income) => {
+              let rate = income.currency.rate / 1;
+              return sum + parseFloat(income.value) * rate;
+          }, 0);
+  
       let totalExpense = this.expenses
           .filter(expense => expense.date >= startDate && expense.date <= endDate)
-          .reduce((sum, expense) => sum + parseFloat(expense.value), 0);
-
+          .reduce((sum, expense) => {
+              let rate = expense.currency.rate / 1;
+              return sum + parseFloat(expense.value) * rate;
+          }, 0);
+  
       return totalIncome - totalExpense;
   }
 
-  filterTransactions(startDate, endDate, incomeTypeFilter = null, expenseTypeFilter = null) {
-    let filteredIncomes = this.incomes.filter(income => 
-        income.date >= startDate && 
-        income.date <= endDate &&
-        (incomeTypeFilter === null || income.type === incomeTypeFilter)
-    );
-    let filteredExpenses = this.expenses.filter(expense => 
-        expense.date >= startDate && 
-        expense.date <= endDate &&
-        (expenseTypeFilter === null || expense.type === expenseTypeFilter)
-    );
+  filterTransactions(startDate, endDate) {
+      let filteredIncomes = this.incomes.filter(income => income.date >= startDate && income.date <= endDate);
+      let filteredExpenses = this.expenses.filter(expense => expense.date >= startDate && expense.date <= endDate);
 
-    return {
-        incomes: filteredIncomes,
-        expenses: filteredExpenses
-    };
-}
-
+      return {
+          incomes: filteredIncomes,
+          expenses: filteredExpenses
+      };
+  }
 }
 
 let budget = new Budget();
@@ -235,7 +234,11 @@ function addExpense() {
   let value = document.getElementById('expense-value').value;
   let type = document.getElementById('expense-type').value;
   let date = document.getElementById('expense-date').value;
-  let expense = new Expense(value, type, date);
+  
+  let currencyIndex = prompt("Введите индекс валюты для расхода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let expense = new Expense(value, type, date, currency);
   budget.addExpense(expense);
   updateExpenseList();
 }
@@ -245,7 +248,11 @@ function updateExpense() {
   let value = document.getElementById('expense-value').value;
   let type = document.getElementById('expense-type').value;
   let date = document.getElementById('expense-date').value;
-  let expense = new Expense(value, type, date);
+
+  let currencyIndex = prompt("Введите индекс валюты для расхода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let expense = new Expense(value, type, date, currency);
   budget.updateExpense(index, expense);
   updateExpenseList();
 }
@@ -261,7 +268,7 @@ function updateExpenseList() {
   list.innerHTML = '';
   budget.expenses.forEach((expense, index) => {
       let li = document.createElement('li');
-      li.textContent = `${index}: ${expense.value} - ${expense.type} - ${expense.date}`;
+      li.textContent = `${index}: ${expense.value} ${expense.currency.name} - ${expense.type} - ${expense.date}`;
       list.appendChild(li);
   });
 }
@@ -270,7 +277,11 @@ function addIncome() {
   let value = document.getElementById('income-value').value;
   let type = document.getElementById('income-type').value;
   let date = document.getElementById('income-date').value;
-  let income = new Income(value, type, date);
+  
+  let currencyIndex = prompt("Введите индекс валюты для дохода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let income = new Income(value, type, date, currency);
   budget.addIncome(income);
   updateIncomeList();
 }
@@ -280,7 +291,11 @@ function updateIncome() {
   let value = document.getElementById('income-value').value;
   let type = document.getElementById('income-type').value;
   let date = document.getElementById('income-date').value;
-  let income = new Income(value, type, date);
+
+  let currencyIndex = prompt("Введите индекс валюты для дохода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let income = new Income(value, type, date, currency);
   budget.updateIncome(index, income);
   updateIncomeList();
 }
@@ -296,7 +311,7 @@ function updateIncomeList() {
   list.innerHTML = '';
   budget.incomes.forEach((income, index) => {
       let li = document.createElement('li');
-      li.textContent = `${index}: ${income.value} - ${income.type} - ${income.date}`;
+      li.textContent = `${index}: ${income.value} ${income.currency.name} - ${income.type} - ${income.date}`;
       list.appendChild(li);
   });
 }
@@ -311,99 +326,17 @@ function calculateBalance() {
 function filterTransactions() {
   let startDate = document.getElementById('filter-start-date').value;
   let endDate = document.getElementById('filter-end-date').value;
-  let incomeType = document.getElementById('filter-income-type').value.trim();
-  let expenseType = document.getElementById('filter-expense-type').value.trim();
-
-  let filteredIncomes = budget.incomes.filter(income =>
-      income.date >= startDate &&
-      income.date <= endDate &&
-      (incomeType === "" || income.type === incomeType)
-  );
-
-  let filteredExpenses = budget.expenses.filter(expense =>
-      expense.date >= startDate &&
-      expense.date <= endDate &&
-      (expenseType === "" || expense.type === expenseType)
-  );
-
-  // Отображение результатов фильтрации
+  let filtered = budget.filterTransactions(startDate, endDate);
   let list = document.getElementById('filter-result');
   list.innerHTML = '';
-
-  filteredIncomes.forEach(income => {
+  filtered.incomes.forEach(income => {
       let li = document.createElement('li');
       li.textContent = `Доход: ${income.value} - ${income.type} - ${income.date}`;
       list.appendChild(li);
   });
-
-  filteredExpenses.forEach(expense => {
+  filtered.expenses.forEach(expense => {
       let li = document.createElement('li');
       li.textContent = `Расход: ${expense.value} - ${expense.type} - ${expense.date}`;
       list.appendChild(li);
   });
-}
-let balanceChart; // Глобальная переменная для хранения экземпляра графика
-
-function plotBalance() {
-    let startDate = document.getElementById('balance-start-date').value;
-    let endDate = document.getElementById('balance-end-date').value;
-
-    if (!startDate || !endDate) {
-        alert("Введите начальную и конечную даты!");
-        return;
-    }
-
-    let incomes = budget.incomes
-        .filter(income => income.date >= startDate && income.date <= endDate)
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    let expenses = budget.expenses
-        .filter(expense => expense.date >= startDate && expense.date <= endDate)
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    let changeDates = [...new Set([...incomes.map(i => i.date), ...expenses.map(e => e.date)])];
-    changeDates.sort((a, b) => new Date(a) - new Date(b));
-
-    let balance = 0;
-    let balances = changeDates.map(date => {
-        incomes.forEach(income => {
-            if (income.date === date) balance += parseFloat(income.value);
-        });
-        expenses.forEach(expense => {
-            if (expense.date === date) balance -= parseFloat(expense.value);
-        });
-        return balance;
-    });
-
-    if (balanceChart) {
-        balanceChart.destroy();
-    }
-
-    const ctx = document.getElementById('balance-chart').getContext('2d');
-    balanceChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: changeDates,
-            datasets: [{
-                label: 'Баланс',
-                data: balances,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1,
-                fill: false,
-                pointBackgroundColor: 'rgb(255, 99, 132)', 
-                pointRadius: 5, 
-                pointHoverRadius: 7 
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    title: { display: true, text: 'Дата' }
-                },
-                y: {
-                    title: { display: true, text: 'Баланс' }
-                }
-            }
-        }
-    });
 }
