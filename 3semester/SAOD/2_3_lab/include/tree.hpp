@@ -6,8 +6,6 @@
 #include <print>
 #include <vector>
 
-template <class T>
-class GraphicsTree;
 
 template <typename T>
 concept Arithmetic = requires(T a, T b) {
@@ -26,7 +24,6 @@ struct BTreeNode {
 
 template <Arithmetic T>
 class ITree {
-  friend GraphicsTree<T>;
 
  protected:
   std::unique_ptr<BTreeNode<T>> root{};

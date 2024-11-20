@@ -114,15 +114,24 @@ class Budget {
       return totalIncome - totalExpense;
   }
 
-  filterTransactions(startDate, endDate) {
-      let filteredIncomes = this.incomes.filter(income => income.date >= startDate && income.date <= endDate);
-      let filteredExpenses = this.expenses.filter(expense => expense.date >= startDate && expense.date <= endDate);
+  filterTransactions(startDate, endDate, incomeTypeFilter = null, expenseTypeFilter = null) {
+    let filteredIncomes = this.incomes.filter(income => 
+        income.date >= startDate && 
+        income.date <= endDate &&
+        (incomeTypeFilter === null || income.type === incomeTypeFilter)
+    );
+    let filteredExpenses = this.expenses.filter(expense => 
+        expense.date >= startDate && 
+        expense.date <= endDate &&
+        (expenseTypeFilter === null || expense.type === expenseTypeFilter)
+    );
 
-      return {
-          incomes: filteredIncomes,
-          expenses: filteredExpenses
-      };
-  }
+    return {
+        incomes: filteredIncomes,
+        expenses: filteredExpenses
+    };
+}
+
 }
 
 let budget = new Budget();
@@ -302,17 +311,99 @@ function calculateBalance() {
 function filterTransactions() {
   let startDate = document.getElementById('filter-start-date').value;
   let endDate = document.getElementById('filter-end-date').value;
-  let filtered = budget.filterTransactions(startDate, endDate);
+  let incomeType = document.getElementById('filter-income-type').value.trim();
+  let expenseType = document.getElementById('filter-expense-type').value.trim();
+
+  let filteredIncomes = budget.incomes.filter(income =>
+      income.date >= startDate &&
+      income.date <= endDate &&
+      (incomeType === "" || income.type === incomeType)
+  );
+
+  let filteredExpenses = budget.expenses.filter(expense =>
+      expense.date >= startDate &&
+      expense.date <= endDate &&
+      (expenseType === "" || expense.type === expenseType)
+  );
+
+  // Отображение результатов фильтрации
   let list = document.getElementById('filter-result');
   list.innerHTML = '';
-  filtered.incomes.forEach(income => {
+
+  filteredIncomes.forEach(income => {
       let li = document.createElement('li');
       li.textContent = `Доход: ${income.value} - ${income.type} - ${income.date}`;
       list.appendChild(li);
   });
-  filtered.expenses.forEach(expense => {
+
+  filteredExpenses.forEach(expense => {
       let li = document.createElement('li');
       li.textContent = `Расход: ${expense.value} - ${expense.type} - ${expense.date}`;
       list.appendChild(li);
   });
+}
+let balanceChart; // Глобальная переменная для хранения экземпляра графика
+
+function plotBalance() {
+    let startDate = document.getElementById('balance-start-date').value;
+    let endDate = document.getElementById('balance-end-date').value;
+
+    if (!startDate || !endDate) {
+        alert("Введите начальную и конечную даты!");
+        return;
+    }
+
+    let incomes = budget.incomes
+        .filter(income => income.date >= startDate && income.date <= endDate)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    let expenses = budget.expenses
+        .filter(expense => expense.date >= startDate && expense.date <= endDate)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    let changeDates = [...new Set([...incomes.map(i => i.date), ...expenses.map(e => e.date)])];
+    changeDates.sort((a, b) => new Date(a) - new Date(b));
+
+    let balance = 0;
+    let balances = changeDates.map(date => {
+        incomes.forEach(income => {
+            if (income.date === date) balance += parseFloat(income.value);
+        });
+        expenses.forEach(expense => {
+            if (expense.date === date) balance -= parseFloat(expense.value);
+        });
+        return balance;
+    });
+
+    if (balanceChart) {
+        balanceChart.destroy();
+    }
+
+    const ctx = document.getElementById('balance-chart').getContext('2d');
+    balanceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: changeDates,
+            datasets: [{
+                label: 'Баланс',
+                data: balances,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1,
+                fill: false,
+                pointBackgroundColor: 'rgb(255, 99, 132)', 
+                pointRadius: 5, 
+                pointHoverRadius: 7 
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: { display: true, text: 'Дата' }
+                },
+                y: {
+                    title: { display: true, text: 'Баланс' }
+                }
+            }
+        }
+    });
 }
