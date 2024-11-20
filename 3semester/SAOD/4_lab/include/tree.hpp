@@ -294,3 +294,13 @@ class PBSTree : public ITree<T> {
     this->root = newTree(0, arr.size() - 1, arr);
   }
 };
+//implement binary search tree
+template <Arithmetic T>
+class BSTree : public ITree<T> {
+ private:
+ [[nodiscard]] constexpr std::unique_ptr<BTreeNode<T>> newTree(
+  int64_t left, int64_t right, const std::vector<T>& arr) noexcept {
+    
+  }
+ 
+}

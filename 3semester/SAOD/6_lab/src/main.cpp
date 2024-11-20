@@ -1,7 +1,7 @@
 #include <iostream>
 #include <random>
 
-#include "tree.hpp"
+#include "../include/tree.hpp"
 
 void lab1() {
   RSTree<int> tree;
@@ -140,33 +140,13 @@ void lab6() {
   }
 }
 
-void lab7() {
-    BTree<int, 3> dbd_tree;
-    for (int i = 0; i < 100; i++) dbd_tree.add(i);
-
-    AVLTree<int> avl_tree;
-    for (int i = 0; i < 100; i++) avl_tree.add(i);
-
-    std::print("From left to right: ");
-    dbd_tree.printFromLeftToRight();
-
-    std::println("\n n = 100 | Size | Sum | Height | Medium Height");
-    std::println("     AVL |{:5} |{:4} |{:7} |{:14.2f}", avl_tree.getSize(), avl_tree.getSum(), avl_tree.getHeight(), avl_tree.getMediumHeight());
-    std::println("     DBD |{:5} |{:4} |{:7} |{:14.2f}", dbd_tree.getSize(), dbd_tree.getSum(), dbd_tree.getHeight(), dbd_tree.getMediumHeight());
-
-    std::println("\nLevels count: {}", dbd_tree.getLevelsCount());
-}
-
-
-
 int main() {
   // lab1();
   // lab2();
   // lab3();
   // lab4();
   // lab5();
-  // lab6()
-  lab7();
+  lab6();
 
   return 0;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <random>
 
-#include "tree.hpp"
+#include "../include/tree.hpp"
 
 void lab1() {
   RSTree<int> tree;
@@ -158,44 +158,6 @@ void lab7() {
 }
 
 
-void lab8() {
-
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(1, 100);
-
-    std::size_t size = 7;
-
-    std::vector<std::pair<int, uint64_t>> arr;
-    for (int i = 0; i < size; i++)
-        arr.push_back(std::pair<int, uint64_t>(i, dis(gen)));
-
-    std::print("Base array: ");
-    for (const auto& elem : arr) std::print("{} ", elem.first);
-    std::println();
-    std::print("Array weights: ");
-    for (const auto& elem : arr) std::print("{} ", elem.second);
-    std::println("\n");
-
-    os_tree::EOSTree<int> eost_tree(arr);
-    std::print("Tree from left to right: ");
-    eost_tree.printFromLeftToRight();
-
-    std::println("AW: ");
-    eost_tree.printAW();
-    std::println("AP: ");
-    eost_tree.printAP();
-    std::println("AR: ");
-    eost_tree.printAR();
-
-    std::println("\nAP[0,size] / AW[0,size] = {}", static_cast<double>(eost_tree.getAP()[0][size]) / static_cast<double>(eost_tree.getAW()[0][size]));
-    std::println("The weighted average height tree: {}", eost_tree.weightedAverageHeightTree());
-
-    std::println("\n n = {:3} | Size | Sum | Height | Medium Height", size);
-    std::println("     EOS |{:5} |{:4} |{:7} |{:14}", eost_tree.getSize(), eost_tree.getSum(), eost_tree.getHeight(), eost_tree.getMediumHeight());
-
-}
-
 
 int main() {
   // lab1();
@@ -203,9 +165,8 @@ int main() {
   // lab3();
   // lab4();
   // lab5();
-  // lab6();
-  // lab7();
-  lab8();
+  // lab6()
+  lab7();
 
   return 0;
 }

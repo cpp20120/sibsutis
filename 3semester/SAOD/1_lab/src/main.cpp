@@ -1,6 +1,6 @@
 #include <print>
 
-#include "./tree.hpp"
+#include "../include/tree.hpp"
 
 auto main() -> int {
   tree::BTree<int> tree;

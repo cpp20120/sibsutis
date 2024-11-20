@@ -2,7 +2,7 @@
 #include <print>
 #include <random>
 
-#include "tree.hpp"
+#include "../include/tree.hpp"
 
 void lab1() {
   BTree<int> tree;

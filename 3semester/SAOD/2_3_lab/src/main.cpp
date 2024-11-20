@@ -1,6 +1,6 @@
 #include <random>
 
-#include "./tree.hpp"
+#include "../include/tree.hpp"
 
 static void lab1() {
   BTree<int> btree;

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <random>
 
-#include "tree.hpp"
+#include "../include/tree.hpp"
 
 void lab1() {
   RSTree<int> tree;
@@ -122,12 +122,90 @@ void lab5() {
                avl_tree.getMediumHeight());
 }
 
+void lab6() {
+  std::print("{}\n", "Enter elements(10) of AVL tree:");
+  AVLTree<int> tree;
+  std::vector<int> arr(10);
+
+  for (int& elem : arr) {
+    std::cin >> elem;
+    tree.add(elem);
+  }
+
+  tree.printFromLeftToRight();
+
+  for (int elem : arr) {
+    tree.remove(elem);
+    tree.printFromLeftToRight();
+  }
+}
+
+void lab7() {
+    BTree<int, 3> dbd_tree;
+    for (int i = 0; i < 100; i++) dbd_tree.add(i);
+
+    AVLTree<int> avl_tree;
+    for (int i = 0; i < 100; i++) avl_tree.add(i);
+
+    std::print("From left to right: ");
+    dbd_tree.printFromLeftToRight();
+
+    std::println("\n n = 100 | Size | Sum | Height | Medium Height");
+    std::println("     AVL |{:5} |{:4} |{:7} |{:14.2f}", avl_tree.getSize(), avl_tree.getSum(), avl_tree.getHeight(), avl_tree.getMediumHeight());
+    std::println("     DBD |{:5} |{:4} |{:7} |{:14.2f}", dbd_tree.getSize(), dbd_tree.getSum(), dbd_tree.getHeight(), dbd_tree.getMediumHeight());
+
+    std::println("\nLevels count: {}", dbd_tree.getLevelsCount());
+}
+
+
+void lab8() {
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(1, 100);
+
+    std::size_t size = 7;
+
+    std::vector<std::pair<int, uint64_t>> arr;
+    for (int i = 0; i < size; i++)
+        arr.push_back(std::pair<int, uint64_t>(i, dis(gen)));
+
+    std::print("Base array: ");
+    for (const auto& elem : arr) std::print("{} ", elem.first);
+    std::println();
+    std::print("Array weights: ");
+    for (const auto& elem : arr) std::print("{} ", elem.second);
+    std::println("\n");
+
+    os_tree::EOSTree<int> eost_tree(arr);
+    std::print("Tree from left to right: ");
+    eost_tree.printFromLeftToRight();
+
+    std::println("AW: ");
+    eost_tree.printAW();
+    std::println("AP: ");
+    eost_tree.printAP();
+    std::println("AR: ");
+    eost_tree.printAR();
+
+    std::println("\nAP[0,size] / AW[0,size] = {}", static_cast<double>(eost_tree.getAP()[0][size]) / static_cast<double>(eost_tree.getAW()[0][size]));
+    std::println("The weighted average height tree: {}", eost_tree.weightedAverageHeightTree());
+
+    std::println("\n n = {:3} | Size | Sum | Height | Medium Height", size);
+    std::println("     EOS |{:5} |{:4} |{:7} |{:14}", eost_tree.getSize(), eost_tree.getSum(), eost_tree.getHeight(), eost_tree.getMediumHeight());
+
+}
+
+
 int main() {
   // lab1();
   // lab2();
   // lab3();
   // lab4();
-  lab5();
+  // lab5();
+  // lab6();
+  // lab7();
+  lab8();
 
   return 0;
 }

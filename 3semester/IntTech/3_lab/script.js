@@ -18,18 +18,20 @@ class IncomeType {
 }
 
 class Expense {
-  constructor(value, type, date) {
+  constructor(value, type, date, currency) {
       this.value = value;
       this.type = type;
       this.date = date;
+      this.currency = currency;
   }
 }
 
 class Income {
-  constructor(value, type, date) {
+  constructor(value, type, date, currency) {
       this.value = value;
       this.type = type;
       this.date = date;
+      this.currency = currency; // Added currency
   }
 }
 
@@ -105,12 +107,18 @@ class Budget {
   calculateBalance(startDate, endDate) {
       let totalIncome = this.incomes
           .filter(income => income.date >= startDate && income.date <= endDate)
-          .reduce((sum, income) => sum + parseFloat(income.value), 0);
-
+          .reduce((sum, income) => {
+              let rate = income.currency.rate / 1;
+              return sum + parseFloat(income.value) * rate;
+          }, 0);
+  
       let totalExpense = this.expenses
           .filter(expense => expense.date >= startDate && expense.date <= endDate)
-          .reduce((sum, expense) => sum + parseFloat(expense.value), 0);
-
+          .reduce((sum, expense) => {
+              let rate = expense.currency.rate / 1;
+              return sum + parseFloat(expense.value) * rate;
+          }, 0);
+  
       return totalIncome - totalExpense;
   }
 
@@ -226,7 +234,11 @@ function addExpense() {
   let value = document.getElementById('expense-value').value;
   let type = document.getElementById('expense-type').value;
   let date = document.getElementById('expense-date').value;
-  let expense = new Expense(value, type, date);
+  
+  let currencyIndex = prompt("Введите индекс валюты для расхода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let expense = new Expense(value, type, date, currency);
   budget.addExpense(expense);
   updateExpenseList();
 }
@@ -236,7 +248,11 @@ function updateExpense() {
   let value = document.getElementById('expense-value').value;
   let type = document.getElementById('expense-type').value;
   let date = document.getElementById('expense-date').value;
-  let expense = new Expense(value, type, date);
+
+  let currencyIndex = prompt("Введите индекс валюты для расхода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let expense = new Expense(value, type, date, currency);
   budget.updateExpense(index, expense);
   updateExpenseList();
 }
@@ -252,7 +268,7 @@ function updateExpenseList() {
   list.innerHTML = '';
   budget.expenses.forEach((expense, index) => {
       let li = document.createElement('li');
-      li.textContent = `${index}: ${expense.value} - ${expense.type} - ${expense.date}`;
+      li.textContent = `${index}: ${expense.value} ${expense.currency.name} - ${expense.type} - ${expense.date}`;
       list.appendChild(li);
   });
 }
@@ -261,7 +277,11 @@ function addIncome() {
   let value = document.getElementById('income-value').value;
   let type = document.getElementById('income-type').value;
   let date = document.getElementById('income-date').value;
-  let income = new Income(value, type, date);
+  
+  let currencyIndex = prompt("Введите индекс валюты для дохода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let income = new Income(value, type, date, currency);
   budget.addIncome(income);
   updateIncomeList();
 }
@@ -271,7 +291,11 @@ function updateIncome() {
   let value = document.getElementById('income-value').value;
   let type = document.getElementById('income-type').value;
   let date = document.getElementById('income-date').value;
-  let income = new Income(value, type, date);
+
+  let currencyIndex = prompt("Введите индекс валюты для дохода:\n" + budget.currencies.map((currency, index) => `${index}: ${currency.name}`).join('\n'));
+  let currency = budget.currencies[currencyIndex];
+
+  let income = new Income(value, type, date, currency);
   budget.updateIncome(index, income);
   updateIncomeList();
 }
@@ -287,7 +311,7 @@ function updateIncomeList() {
   list.innerHTML = '';
   budget.incomes.forEach((income, index) => {
       let li = document.createElement('li');
-      li.textContent = `${index}: ${income.value} - ${income.type} - ${income.date}`;
+      li.textContent = `${index}: ${income.value} ${income.currency.name} - ${income.type} - ${income.date}`;
       list.appendChild(li);
   });
 }

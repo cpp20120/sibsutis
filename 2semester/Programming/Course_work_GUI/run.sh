@@ -1,7 +1,5 @@
-#!/bin/bash
-
-mkdir -p build
+mkdir build
 cd build
 cmake .. -G=Ninja
 ninja -j$(nproc)
-./3_lab
+./cursach

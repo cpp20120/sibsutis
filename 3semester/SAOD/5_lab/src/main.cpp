@@ -1,8 +1,8 @@
 #include <iostream>
 #include <random>
 
-#include "tree.hpp"
-
+#include "../include/tree.hpp"
+/**
 void lab1() {
   RSTree<int> tree;
   tree.add(1);
@@ -92,52 +92,41 @@ void lab4() {
     tree.printFromLeftToRight();
   }
 }
-
+*/
 void lab5() {
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> dis(-100, 100);
 
-  AVLTree<int> avl_tree;
-  PBSTree<int> pbs_tree;
-  std::vector<int> arr;
-
+  //AVLTree<int> avl_tree;
+  std::vector<int> arr ;
   for (int i = 0; i < 100; i++) arr.push_back(dis(gen));
+  PBSTree<int> pbs_tree = PBSTree<int>::newTree(0, 99, arr);
+  BSTree<int> bstree = BSTree<int>::newTree(0, 99, arr);
+
+  
 
   for (int& elem : arr) {
     avl_tree.add(elem);
     pbs_tree.add(elem);
+    bstree.add(elem);
   }
 
   std::print("From left to right: ");
-  avl_tree.printFromLeftToRight();
+  //avl_tree.printFromLeftToRight();
 
   std::println("\n n = 100 | Size | Sum | Height | Medium Height");
 
   std::println("     PBS |{:5} |{:4} |{:7} |{:14}", pbs_tree.getSize(),
                pbs_tree.getSum(), pbs_tree.getHeight(),
                pbs_tree.getMediumHeight());
-  std::println("     AVL |{:5} |{:4} |{:7} |{:14}", avl_tree.getSize(),
+ /* std::println("     AVL |{:5} |{:4} |{:7} |{:14}", avl_tree.getSize(),
                avl_tree.getSum(), avl_tree.getHeight(),
-               avl_tree.getMediumHeight());
-}
+               avl_tree.getMediumHeight());*/
 
-void lab6() {
-  std::print("{}\n", "Enter elements(10) of AVL tree:");
-  AVLTree<int> tree;
-  std::vector<int> arr(10);
-
-  for (int& elem : arr) {
-    std::cin >> elem;
-    tree.add(elem);
-  }
-
-  tree.printFromLeftToRight();
-
-  for (int elem : arr) {
-    tree.remove(elem);
-    tree.printFromLeftToRight();
-  }
+  std::println("     BST |{:5} |{:4} |{:7} |{:14}", bstree.getSize(),
+               bstree.getSum(), bstree.getHeight(),
+               bstree.getMediumHeight());
 }
 
 int main() {
@@ -145,8 +134,7 @@ int main() {
   // lab2();
   // lab3();
   // lab4();
-  // lab5();
-  lab6();
+  lab5();
 
   return 0;
 }
