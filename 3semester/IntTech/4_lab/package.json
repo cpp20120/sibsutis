@@ -1,0 +1,14 @@
+{
+  "name": "4_lab",
+  "version": "1.0.0",
+  "description": "lab4 with bootstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cppshizoid",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
