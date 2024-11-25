@@ -1,1 +1,1 @@
-# just git clone deps from github into folders
+# just git clone deps from github into folder dependecy/ 
