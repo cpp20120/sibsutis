@@ -102,9 +102,7 @@ void lab5() {
   std::vector<int> arr ;
   for (int i = 0; i < 100; i++) arr.push_back(dis(gen));
   PBSTree<int> pbs_tree = PBSTree<int>::newTree(0, 99, arr);
-  BSTree<int> bstree = BSTree<int>::newTree(0, 99, arr);
-
-  
+  PBSTree<int> bstree = BSTree<int>::newTree(0, 99, arr);
 
   for (int& elem : arr) {
     avl_tree.add(elem);

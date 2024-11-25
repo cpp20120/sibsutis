@@ -2,6 +2,8 @@
 
 Свалочка лаб за время обучения в сибгути
 
+[![](https://tokei.rs/b1/gitlab/cppshizoid/sibsutis?category=code)](https://gitlab.com/cppshizoid/sibsutis).
+
 Про рабочее окружение:
 [devenv](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/DEVENV.md)
 
