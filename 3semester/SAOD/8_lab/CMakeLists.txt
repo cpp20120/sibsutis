@@ -21,9 +21,8 @@ endif()
 file(GLOB SOURCE_FILES src/*.cpp)
 file(GLOB HEADER_FILES include/*.hpp)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-add_executable(${PROJECT_NAME} tree.hpp main.cpp)
+add_executable(${PROJECT_NAME}  src/main.cpp)
 
 target_compile_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:-Wall
                                                -fsanitize=address>)
