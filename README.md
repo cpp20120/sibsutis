@@ -102,6 +102,7 @@
 - [7. Реализация списка. Технологии ООП](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP/7_lab)
 - [Курсовая работа. Шахматы](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/OOP/ChessImgui)
 
+
 [САОД Структуры и алгоритмы обработки данных](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD)
 - [1.Задания по построению двоичного дерева и обходам дерева](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/1_lab)
 - [2.Задания по построению идеально сбалансированного дерева поиска ИСДП](https://gitlab.com/cppshizoid/sibsutis/-/blob/master/3semester/SAOD/2_3_lab)
