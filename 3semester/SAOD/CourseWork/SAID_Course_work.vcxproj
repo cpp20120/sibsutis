@@ -128,10 +128,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="coding.cpp" />
+    <ClCompile Include="db.cpp" />
+    <ClCompile Include="index_array.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="search.cpp" />
+    <ClCompile Include="sort.cpp" />
+    <ClCompile Include="tree.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="utils.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="printer.h" />
+    <ClInclude Include="coding.hpp" />
+    <ClInclude Include="index_array.hpp" />
+    <ClInclude Include="db.hpp" />
+    <ClInclude Include="search.hpp" />
+    <ClInclude Include="sort.hpp" />
+    <ClInclude Include="tree.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="testBase2.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
