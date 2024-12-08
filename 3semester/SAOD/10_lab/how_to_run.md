@@ -9,7 +9,7 @@ mkdir build
 cd build
 cmake .. -G=Ninja
 ninja -j$(nproc)
-./9_lab
+./10_lab
 ```
 
 or just
