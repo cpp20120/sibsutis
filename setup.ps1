@@ -1,3 +1,8 @@
+$ProfileUrl =  "https://gitlab.com/cppshizoid/dotfiles/-/blob/main/vscode/BasicC++.code-profile?ref_type=heads"
+
+$ProfileName = "settings.json"
+
+
 function Install-VisualStudio {
     try {
       Invoke-WebRequest -Uri "https://aka.ms/vs/17/release/vs_Community.exe" -OutFile "vs_Community.exe"
@@ -70,10 +75,34 @@ function Install-VisualStudio {
     }
   }
   
+  function Install-VsCode {
+    param(
+          [string]$ProfileName = "setting.json"
+        )
+    
+    $ConfigPath = Join-Path ([Environment]::GetFolderPath("ApplicationData")) "Code\User"
+
+    if (-not (Test-Path $ConfigPath)) {
+      New-Item -ItemType Directory -Path $ConfigPath -Force | Out-Null
+    }
+
+    $ProfilePath = Join-Path $ConfigPath $ProfileName
+
+    try {
+      Invoke-WebRequest -Uri $ProfileUrl -OutFile $ProfilePath -ErrorAction Break
+      Write-Host "Vscode proifle saved into $ProfilePath" -ForegroundColor Green
+    } catch {
+      Write-Host "Failed to download profile. Error: $($_.Exception.Message)" -ForegroundColor Red
+      return $false
+    }
+    return $true
+  }
+  
   Install-VisualStudio
   Install-Tools
   Install-Vcpkg
   Install-Git
-  
+  Install-VsCode
+
   Write-Host "Installation complete!"
   
