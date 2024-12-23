@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой бюджет</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 bg-dark text-white d-flex flex-column vh-100">
+                <h3 class="text-center my-3">Бюджет</h3>
+                <hr>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active" data-bs-toggle="tab" href="#balance">Баланс</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" data-bs-toggle="tab" href="#filter">Фильтр</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" data-bs-toggle="tab" href="#income">Доходы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" data-bs-toggle="tab" href="#expenses">Расходы</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Content -->
+            <div class="col-md-10 p-4">
+                <div class="tab-content">
+                    <!-- Balance -->
+                    <div class="tab-pane fade show active" id="balance">
+                        <h2>Баланс</h2>
+                        <hr>
+
+                        <button class="btn btn-success" onclick="showChart()">Обновить график</button>
+
+                        <br> <br>
+                        <h4>Изменение баланса: <div id="balanceNumber"></div>
+                        </h4>
+
+                        <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+                    </div>
+
+                    <!-- Income -->
+                    <div class="tab-pane fade" id="income">
+                        <h2>Доходы</h2>
+                        <hr>
+
+                        <!-- Форма для добавления или редактирования дохода -->
+                        <label for="incomeValue"><br><br>Значение:</label>
+                        <input type="number" id="incomeValue" placeholder="Введите значение дохода">
+
+                        <label for="incomeType"><br><br>Тип дохода:</label>
+                        <input type="text" id="incomeType" placeholder="Введите тип дохода">
+
+                        <label for="incomeDate"><br><br>Дата:</label>
+                        <input type="date" id="incomeDate">
+
+                        <label for="incomeCurrency"><br><br>Валюта:</label>
+                        <input type="text" id="incomeCurrency" placeholder="Введите валюту">
+
+                        <button class="btn btn-success" onclick="handleAddIncome()">Сохранить</button>
+                        <br> <br>
+
+                        <!-- Таблица для отображения доходов -->
+                        <h3>Список доходов</h3>
+                        <table id="incomeTable" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Значение</th>
+                                    <th>Тип</th>
+                                    <th>Дата</th>
+                                    <th>Валюта</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Expenses -->
+                    <div class="tab-pane fade" id="expenses">
+                        <h2>Расходы</h2>
+                        <hr>
+
+                        <label for="expenseValue"><br><br>Значение:</label>
+                        <input type="number" id="expenseValue" placeholder="Введите значение расхода">
+
+                        <label for="expenseType"><br><br>Тип расхода:</label>
+                        <input type="text" id="expenseType" placeholder="Введите тип расхода">
+
+                        <label for="expenseDate"><br><br>Дата:</label>
+                        <input type="date" id="expenseDate">
+
+                        <label for="expenseCurrency"><br><br>Валюта:</label>
+                        <input type="text" id="expenseCurrency" placeholder="Введите валюту">
+
+                        <button class="btn btn-success" onclick="handleAddExpense()">Сохранить</button>
+
+                        <!-- Таблица для отображения расходов -->
+                        <h3>Список расходов</h3>
+                        <table id="expenseTable" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Значение</th>
+                                    <th>Тип</th>
+                                    <th>Дата</th>
+                                    <th>Валюта</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Filter -->
+                    <div class="tab-pane fade" id="filter">
+                        <h2>Фильтр</h2>
+                        <hr>
+
+                        <h3>Введите период времени и типы доходов и расходов, о которых хотите узнать информацию</h3>
+
+                        <label for="stDate"><br><br>Начальная дата:</label>
+                        <input type="date" id="stDate">
+
+                        <label for="enDate"><br><br>Конечная дата:</label>
+                        <input type="date" id="enDate">
+
+                        <label for="inType"><br><br>Тип дохода:</label>
+                        <input type="text" id="inType" placeholder="Введите тип дохода">
+
+                        <label for="exType"><br><br>Тип расхода:</label>
+                        <input type="text" id="exType" placeholder="Введите тип расхода">
+
+                        <button class="btn btn-success" onclick="printFilter()">Показать информацию</button>
+                        <br> <br>
+
+                        <h4>Сумма доходов: <p id="filterIn"></p>
+                        </h4>
+                        <!-- Таблица для отображения доходов -->
+                        <h4>Список доходов</h4>
+                        <table id="incomeTableFilter" class="table table-striped">
+                            <tr>
+                                <th>Значение</th>
+                                <th>Дата</th>
+                                <th>Валюта</th>
+                            </tr>
+                        </table>
+
+                        <br> <br>
+
+                        <h4>Сумма расходов: <p id="filterEx"></p>
+                        </h4>
+                        <h4>Список расходов</h4>
+                        <table id="expenseTableFilter" class="table table-striped">
+                            <tr>
+                                <th>Значение</th>
+                                <th>Дата</th>
+                                <th>Валюта</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

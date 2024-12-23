@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav-link.active {
+    background-color: #007bff;
+    color: white !important;
+    border-radius: 4px;
+}
+
+.tab-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.filters label {
+    margin-right: 5px;
+}

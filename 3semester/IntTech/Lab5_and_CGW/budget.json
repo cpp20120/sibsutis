@@ -1,0 +1,30 @@
+{
+  "incomes": [
+    {
+      "value": "10000",
+      "type": "зп",
+      "date": "2024-12-10",
+      "currency": "rub"
+    },
+    {
+      "value": "1000",
+      "type": "дивиденды",
+      "date": "2024-12-11",
+      "currency": "dollar"
+    },
+    {
+      "value": "500",
+      "type": "стипа",
+      "date": "2024-12-12",
+      "currency": "rub"
+    }
+  ],
+  "expenses": [
+    {
+      "value": "5000",
+      "type": "машина",
+      "date": "2024-12-13",
+      "currency": "rub"
+    }
+  ]
+}
