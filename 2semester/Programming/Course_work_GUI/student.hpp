@@ -3,22 +3,26 @@
 
 #include <QString>
 #include <QVector>
+
 /**
- * @brief Структура для представления информации о предмете.
+ * @brief Structure representing subject information.
  */
 struct Subject {
-    QString name;
-    int grade;
-};
-/**
- * @brief Структура для представления информации о студенте.
- */
-struct Student {
-    QString lastName;           ///< Фамилия студента.
-    QString firstName;          ///< Имя студента.
-    QString patronymic;         ///< Отчество студента.
-    QVector<Subject> subjects;  //< Вектор с информацией о предметах студента.
-    [[nodiscard]] QString toString() const;
+  QString name;
+  int grade;
 };
 
-#endif // STUDENT_HPP
+/**
+ * @brief Structure representing student information.
+ */
+struct Student {
+  QString lastName;    ///< Student's last name.
+  QString firstName;   ///< Student's first name.
+  QString patronymic;  ///< Student's middle name (patronymic).
+  QVector<Subject>
+      subjects;  ///< Vector containing student's subject information.
+
+  [[nodiscard]] QString toString() const;
+};
+
+#endif  // STUDENT_HPP

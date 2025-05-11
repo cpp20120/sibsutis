@@ -1,17 +1,18 @@
 #include <QApplication>
+
 #include "studentapp.hpp"
 
 /**
- * @brief Точка входа для приложения.
- * @param argc Количество аргументов командной строки.
- * @param argv Массив аргументов командной строки.
- * @return Код выхода приложения.
+ * @brief Entry point for the application.
+ * @param argc Number of command line arguments.
+ * @param argv Array of command line arguments.
+ * @return Application exit code.
  */
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+  QApplication app(argc, argv);
 
-    StudentApp studentApp;
-    studentApp.show();
+  StudentApp studentApp;
+  studentApp.show();
 
-    return app.exec();
+  return app.exec();
 }

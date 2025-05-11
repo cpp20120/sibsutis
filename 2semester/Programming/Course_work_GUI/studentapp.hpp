@@ -1,34 +1,76 @@
 #ifndef STUDENTAPP_HPP
 #define STUDENTAPP_HPP
 
+#include <QLabel>
 #include <QMainWindow>
-#include "student.hpp"
+#include <QPushButton>
+#include <QTextEdit>
+#include <QVBoxLayout>
+#include <QWidget>
+
+#include "studentmanager.hpp"
+
 /**
- * @brief StudentApp класс для управления записями учащихся
+ * @class StudentApp
+ * @brief Main application window for managing student records.
+ *
+ * This class provides a graphical user interface for managing student records,
+ * including creating, viewing, searching, updating, and deleting records.
  */
 class StudentApp : public QMainWindow {
-    Q_OBJECT
-/**
-   * @brief Конструктор класса StudentApp.
-   * @param parent Родительский виджет.
+  Q_OBJECT
+
+ public:
+  /**
+   * @brief Constructs a StudentApp object.
+   *
+   * @param parent The parent widget.
    */
-public:
-    explicit StudentApp(QWidget *parent = nullptr);
+  explicit StudentApp(QWidget *parent = nullptr);
 
-private slots:
-    void createFile();
-    void addRecord();
-    void createIndexFiles();
-    void viewFile();
-    void searchAndUpdateRecord();
-    void deleteRecord();
+ private slots:
+  /**
+   * @brief Creates a new file for storing student records.
+   */
+  void createFile();
 
-private:
-    const int max_record = 4;
-    QString filename = "students.txt";
+  /**
+   * @brief Adds a new student record.
+   */
+  void addRecord();
 
-    void setupUi();
-    void addRecordToFile(const Student &student);
+  /**
+   * @brief Creates index files for sorting student records alphabetically.
+   */
+  void createIndexFiles();
+
+  /**
+   * @brief Displays the contents of the student records file.
+   */
+  void viewFile();
+
+  /**
+   * @brief Searches for a student record by last name and updates it.
+   */
+  void searchAndUpdateRecord();
+
+  /**
+   * @brief Searches for a student record by last name and displays it.
+   */
+  void searchRecord();
+
+  /**
+   * @brief Deletes a student record by last name.
+   */
+  void deleteRecord();
+
+ private:
+  StudentManager studentManager;  ///< Manages student records.
+
+  /**
+   * @brief Sets up the user interface.
+   */
+  void setupUi();
 };
 
-#endif // STUDENTAPP_H
+#endif  // STUDENTAPP_HPP
