@@ -10,7 +10,6 @@ class BaseTree : public ITree<T> {
  protected:
   std::unique_ptr<TNode> root_;
 
-  // Вспомогательные методы
   static void RemoveSubtree(std::unique_ptr<TNode>& node);
   static void PrintPreOrder(const std::unique_ptr<TNode>& node);
   static void PrintInOrder(const std::unique_ptr<TNode>& node);
@@ -46,13 +45,11 @@ class BaseTree : public ITree<T> {
   double AverageHeight() const override;
   T Sum() const override;
 
-  // Дополнительные методы
   T Get(std::size_t index) const;
   std::vector<T> GetInOrderElements() const;
   std::vector<T> GetPreOrderElements() const;
 
  protected:
-  // Эти методы должны быть реализованы в производных классах
   virtual void AddImpl(const T& value) = 0;
   virtual void RemoveImpl(const T& value) = 0;
 };
