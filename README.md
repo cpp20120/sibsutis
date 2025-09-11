@@ -107,7 +107,7 @@
 - [1.Задания по построению двоичного дерева и обходам дерева](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
 - [2.Задания по построению идеально сбалансированного дерева поиска ИСДП](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
 - [3.Задания по построению случайного дерева поиска СДП](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
-- [4.Задания по удалению из случайного дерева поиска СД](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
+- [4.Задания по удалению из случайного дерева поиска СДП](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
 - [5.Задания по построению AVL дерева](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
 - [6.Задания по удалению из AVL дерева](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
 - [7.Задания по построению двоичного Б-дерева поиска](https://github.com/cpp20120/sibsutis/blob/master/3semester/SAOD/Labs/src/main.cpp)
