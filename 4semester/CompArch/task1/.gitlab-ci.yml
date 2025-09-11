@@ -1,0 +1,22 @@
+image: d1orn/arhitectureevm:1.1
+
+stages:
+  - check-format
+  - build
+  - test
+
+check-format:
+  stage: check-format
+  script:
+    - find . -type f -name '*.[ch]' | xargs clang-format --style GNU -i --verbose
+    - git diff --exit-code
+
+build:
+  stage: build
+  script:
+    - make
+
+test:
+  stage: test
+  script:
+    - make test
