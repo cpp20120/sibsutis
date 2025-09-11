@@ -20,7 +20,6 @@ class PBSTree : public BaseTree<T, TNode> {
   void RemoveImpl(const T &value) override;
 };
 
-// Implementation moved to header file
 template <class T, class TNode>
 std::unique_ptr<TNode> PBSTree<T, TNode>::BuildBalancedTree(
     int64_t left, int64_t right, const std::vector<T> &sorted_elements) {
