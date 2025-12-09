@@ -1,4 +1,4 @@
-#include "coding.hpp"
+#include "../include/coding.hpp"
 
 #include <print>
 #include <ranges>
@@ -19,7 +19,6 @@ inline void ClearAndSortDescending(std::vector<Table>& arr) {
   }
   std::ranges::sort(arr, std::greater{}, &Table::probability);
 }
-
 int FindMedian(std::vector<Table>& arr, int left, int right, bool use_a2) {
   if (left == right) return left;
 
@@ -41,7 +40,7 @@ int FindMedian(std::vector<Table>& arr, int left, int right, bool use_a2) {
     }
     return right;  // fallback
   } else {
-    // Стандартный алгоритм - ищем минимальную разницу сумм
+    // ищем минимальную разницу сумм
     double left_sum = 0.0;
     double min_diff = std::numeric_limits<double>::max();
     int best_median = left;
@@ -158,7 +157,6 @@ std::pair<std::vector<size_t>, size_t> RabinKarp(const std::string& text,
 
   for (size_t i = 0; i <= n - m; ++i) {
     if (p == t) {
-      // проверяем посимвольно
       size_t j = 0;
       for (; j < m; ++j) {
         ++compares;
@@ -166,7 +164,6 @@ std::pair<std::vector<size_t>, size_t> RabinKarp(const std::string& text,
       }
       if (j == m) positions.push_back(i);
     } else {
-      // считаем хотя бы одно сравнение для несоответствия хэшей
       ++compares;
     }
 

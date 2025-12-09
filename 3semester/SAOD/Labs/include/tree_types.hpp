@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#undef max
+
 template <class T>
 struct TreeNode {
   T value;

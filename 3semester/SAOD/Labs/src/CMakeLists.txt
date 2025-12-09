@@ -1,1 +1,1 @@
-add_executable(${CMAKE_PROJECT_NAME} avl_tree.cpp b_tree.cpp base_tree.cpp coding.cpp os_tree.cpp rs_tree.cpp main.cpp)
+add_executable(${CMAKE_PROJECT_NAME} coding.cpp main.cpp)

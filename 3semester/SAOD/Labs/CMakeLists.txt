@@ -11,6 +11,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # nvim/vscode clangd helper
 set(CMAKE_EXPORT_COMPILE_COMMANDS OFF)
 
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/chars.txt
+  ${CMAKE_CURRENT_BINARY_DIR}/chars.txt
+  COPYONLY
+)
+
 add_subdirectory(src)
 target_include_directories(SAOD PUBLIC include)
 
