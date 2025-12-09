@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
 #include <print>
 #include <stdexcept>
+#include <vector>
 
 #include "./tree_types.hpp"
 
@@ -87,12 +87,9 @@ class BaseTree : public ITree<T> {
 
  public:
   BaseTree() : root_(nullptr) {}
-  BaseTree(const BaseTree& other) {
-    CopyTree(other.root_, root_);
-  }
-  BaseTree(BaseTree&& other) noexcept
-      : root_(std::move(other.root_)) {}
-  
+  BaseTree(const BaseTree& other) { CopyTree(other.root_, root_); }
+  BaseTree(BaseTree&& other) noexcept : root_(std::move(other.root_)) {}
+
   BaseTree& operator=(const BaseTree& other) {
     if (this != &other) {
       Clear();
@@ -100,56 +97,48 @@ class BaseTree : public ITree<T> {
     }
     return *this;
   }
-  
+
   BaseTree& operator=(BaseTree&& other) noexcept {
     if (this != &other) {
       root_ = std::move(other.root_);
     }
     return *this;
   }
-  
+
   ~BaseTree() override = default;
 
   void Add(const T& value) override { AddImpl(value); }
   void Remove(const T& value) override { RemoveImpl(value); }
-  
-  void Clear() override {
-    RemoveSubtree(root_);
-  }
-  
+
+  void Clear() override { RemoveSubtree(root_); }
+
   void PrintPreOrder() override {
     PrintPreOrder(root_);
     std::println();
   }
-  
+
   void PrintInOrder() override {
     PrintInOrder(root_);
     std::println();
   }
-  
+
   void PrintPostOrder() override {
     PrintPostOrder(root_);
     std::println();
   }
-  
-  std::size_t Size() const override {
-    return Size(root_);
-  }
-  
-  std::size_t Height() const override {
-    return Height(root_);
-  }
-  
+
+  std::size_t Size() const override { return Size(root_); }
+
+  std::size_t Height() const override { return Height(root_); }
+
   double AverageHeight() const override {
     const auto size = Size();
     if (size == 0) return 0.0;
     return static_cast<double>(SumPathLengths(root_, 0)) /
            static_cast<double>(size);
   }
-  
-  T Sum() const override {
-    return SumValues(root_);
-  }
+
+  T Sum() const override { return SumValues(root_); }
 
   T Get(std::size_t index) const {
     std::vector<T> elements;
@@ -159,13 +148,13 @@ class BaseTree : public ITree<T> {
     }
     return elements[index];
   }
-  
+
   std::vector<T> GetInOrderElements() const {
     std::vector<T> elements;
     CollectInOrder(root_, elements);
     return elements;
   }
-  
+
   std::vector<T> GetPreOrderElements() const {
     std::vector<T> elements;
     CollectPreOrder(root_, elements);

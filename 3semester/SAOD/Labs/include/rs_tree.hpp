@@ -55,8 +55,7 @@ class RSTree : public BaseTree<T, TNode> {
     }
   }
 
-  void RemoveRecursive(std::unique_ptr<TNode>& node,
-                                       const T& value) {
+  void RemoveRecursive(std::unique_ptr<TNode>& node, const T& value) {
     if (!node) return;
 
     if (node->value == value) {
@@ -130,15 +129,9 @@ class RSTree : public BaseTree<T, TNode> {
     return this->BaseTree<T, TNode>::GetInOrderElements();
   }
 
-  std::vector<T> ToVector() const {
-    return GetInOrderElements();
-  }
+  std::vector<T> ToVector() const { return GetInOrderElements(); }
 
-  bool Empty() const {
-    return this->root_ == nullptr;
-  }
+  bool Empty() const { return this->root_ == nullptr; }
 
-  TNode* GetRoot() const {
-    return this->root_.get();
-  }
+  TNode* GetRoot() const { return this->root_.get(); }
 };

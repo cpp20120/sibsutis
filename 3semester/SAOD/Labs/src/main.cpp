@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <random>
+#include <set>
 #include <string>
 
 #include "../include/avl_tree.hpp"
@@ -13,7 +14,6 @@
 #include "../include/os_tree.hpp"
 #include "../include/pbs_tree.hpp"
 #include "../include/rs_tree.hpp"
-#include <set>
 
 /**
  *      1
@@ -180,26 +180,24 @@ void Lab5() {
   std::println("     PBS |{:5} |{:4} |{:7} |{:14.2f} ", pbs_tree.Size(),
                pbs_tree.Sum(), pbs_tree.Height(), pbs_tree.AverageHeight());
   std::println("     RST |{:5} |{:4} |{:7} |{:14.2f} ", rs_tree.Size(),
-               rs_tree.Sum(), rs_tree.Height(), rs_tree.AverageHeight() );
+               rs_tree.Sum(), rs_tree.Height(), rs_tree.AverageHeight());
   std::println("     AVL |{:5} |{:4} |{:7} |{:14.2f} ", avl_tree.Size(),
-               avl_tree.Sum(), avl_tree.Height(), avl_tree.AverageHeight()
-               );
+               avl_tree.Sum(), avl_tree.Height(), avl_tree.AverageHeight());
 
-  //std::println("\nAVL Tree Balance Factor: {}", avl_tree.GetBalance());
+  // std::println("\nAVL Tree Balance Factor: {}", avl_tree.GetBalance());
 
   //  AVLTree<int> test_tree;
-  //std::vector<int> test_values = {10, 20, 30, 40, 50, 25};
-  //for (int val : test_values) {
+  // std::vector<int> test_values = {10, 20, 30, 40, 50, 25};
+  // for (int val : test_values) {
   //  test_tree.Add(val);
   //}
 
-  //std::println("\nTest AVL tree (values 10,20,30,40,50,25):");
-  //std::println("Height: {}, Balanced: {}, Balance Factor: {}",
-  //             test_tree.Height(), test_tree.IsBalanced() ? "Yes" : "No",
-  //             test_tree.GetBalance());
-  //std::print("In-order: ");
-  //test_tree.PrintInOrder();
-
+  // std::println("\nTest AVL tree (values 10,20,30,40,50,25):");
+  // std::println("Height: {}, Balanced: {}, Balance Factor: {}",
+  //              test_tree.Height(), test_tree.IsBalanced() ? "Yes" : "No",
+  //              test_tree.GetBalance());
+  // std::print("In-order: ");
+  // test_tree.PrintInOrder();
 }
 void Lab_removeRSTree() {
   std::random_device rd;
@@ -316,7 +314,7 @@ void Lab_remove_PBSTree() {
   for (int value : values_to_remove) {
     bool existed_before = pbs_tree.Contains(value);
 
-    pbs_tree.RemoveImpl(value); 
+    pbs_tree.RemoveImpl(value);
 
     bool exists_after = pbs_tree.Contains(value);
     std::println("Removing value: {} (existed: {}) -> after removal: {}", value,
@@ -504,7 +502,7 @@ void Lab7() {
 
   std::println(" Initial State (Random):");
   std::print("B-tree in-order (first 20): ");
-  b_tree.PrintInOrder();  
+  b_tree.PrintInOrder();
   std::print("DBD-tree in-order (first 20): ");
   dbd_tree.PrintInOrder();
   std::print("AVL tree in-order (first 20): ");
@@ -603,12 +601,12 @@ void Lab7() {
   1   3     6
  /
 0
- * 
+ *
  */
 /**
 void Lab8() {
   SetConsoleOutputCP(CP_UTF8);
-  
+
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> dis(1, 100);
@@ -652,12 +650,12 @@ void Lab8() {
   std::println("-----------------------------------------------");
   std::println("     EOS |{:5} |{:4} |{:7} |{:14.2f}", eost_tree.Size(),
                eost_tree.Sum(), eost_tree.Height(), eost_tree.AverageHeight());
-}     */ 
+}     */
 
 void Lab8() {
   SetConsoleOutputCP(CP_UTF8);
   /*
-  * 
+  *
   * OST
   *       2(weight=2)
           /    \
@@ -682,10 +680,12 @@ void Lab8() {
            4(1)
   */
 
-  const std::size_t size = 6; 
+  const std::size_t size = 6;
   std::vector<std::pair<int, uint64_t>> arr;
 
-  std::vector<int> random_values = {1, 2,3, 4, 5,6,};
+  std::vector<int> random_values = {
+      1, 2, 3, 4, 5, 6,
+  };
   std::vector<uint64_t> weights = {8, 3, 12, 1, 5, 10};
 
   for (int i = 0; i < size; i++) {
@@ -732,8 +732,8 @@ void Lab8() {
 
   const std::size_t random_size = 6;
   for (int i = 0; i < random_size; i++) {
-    int random_val = std::rand() % 100 + 1;         
-    uint64_t random_weight = static_cast<uint64_t>(std::rand() % 15) + 1;  
+    int random_val = std::rand() % 100 + 1;
+    uint64_t random_weight = static_cast<uint64_t>(std::rand() % 15) + 1;
     random_arr.push_back({random_val, random_weight});
   }
 
@@ -798,12 +798,17 @@ void Lab9() {
   std::print("A2 tree in-order: ");
   a2_tree.PrintInOrder();
 
-  std::println("\n n = {:3} | Size | Sum | Height | Average Height|  Avg Weighted Height", size);
+  std::println(
+      "\n n = {:3} | Size | Sum | Height | Average Height|  Avg Weighted "
+      "Height",
+      size);
   std::println("-----------------------------------------------");
-  std::println("     EOS |{:5} |{:4} |{:7} |{:14.2f}| {:14.2f}", eost_tree.Size(),
-               eost_tree.Sum(), eost_tree.Height(), eost_tree.AverageHeight(), eost_tree.GetWeightedAverageHeight());
+  std::println("     EOS |{:5} |{:4} |{:7} |{:14.2f}| {:14.2f}",
+               eost_tree.Size(), eost_tree.Sum(), eost_tree.Height(),
+               eost_tree.AverageHeight(), eost_tree.GetWeightedAverageHeight());
   std::println("      A1 |{:5} |{:4} |{:7} |{:14.2f}| {:14.2f}", a1_tree.Size(),
-               a1_tree.Sum(), a1_tree.Height(), a1_tree.AverageHeight(),a1_tree.GetWeightedAverageHeight());
+               a1_tree.Sum(), a1_tree.Height(), a1_tree.AverageHeight(),
+               a1_tree.GetWeightedAverageHeight());
   std::println("      A2 |{:5} |{:4} |{:7} |{:14.2f}| {:14.2f}", a2_tree.Size(),
                a2_tree.Sum(), a2_tree.Height(), a2_tree.AverageHeight(),
                a2_tree.GetWeightedAverageHeight());
@@ -915,13 +920,13 @@ void Lab10_13() {
   }
 
   std::print("Shennon: \n");
-  coding::Shennon(alphabet);    // Lab 10
-  //std::print("Fano: \n");
-  //coding::Fano(alphabet);       // Lab 11
-  //std::print("Huffman: \n");
-  //coding::Huffman(alphabet);  // Lab 12
-  // std::print("GilbertMur: \n"); 
-  // coding::GilbertMur(alphabet); // Lab 13
+  coding::Shennon(alphabet);  // Lab 10
+  // std::print("Fano: \n");
+  // coding::Fano(alphabet);       // Lab 11
+  // std::print("Huffman: \n");
+  // coding::Huffman(alphabet);  // Lab 12
+  //  std::print("GilbertMur: \n");
+  //  coding::GilbertMur(alphabet); // Lab 13
 
   coding::PrintCodes(alphabet);
 
@@ -959,38 +964,38 @@ void Lab14() {
 int main() {
   std::println("=== Data Structures and Algorithms Labs ===\n");
 
-  //std::println("Lab 1 - Basic Binary Tree");
-  //Lab1();
+  // std::println("Lab 1 - Basic Binary Tree");
+  // Lab1();
 
-  //std::println("\nLab 2 - Perfectly Balanced Tree");
-  //Lab2();
+  // std::println("\nLab 2 - Perfectly Balanced Tree");
+  // Lab2();
 
- //std::println("\nLab 3 - Random search tree build");
- //Lab3();
+  // std::println("\nLab 3 - Random search tree build");
+  // Lab3();
 
-  //std::println("\n Remove from PBS tree");
-  //Lab_remove_PBSTree();
+  // std::println("\n Remove from PBS tree");
+  // Lab_remove_PBSTree();
 
-  //std::print("\n Remove from RST tree");
-  //Lab_removeRSTree();
+  // std::print("\n Remove from RST tree");
+  // Lab_removeRSTree();
 
   // std::println("\nLab 4 - Random search Tree Remove Operations");
   // Lab4();
 
-  //std::println("\nLab 5 - AVL Tree");
-  //Lab5();
+  // std::println("\nLab 5 - AVL Tree");
+  // Lab5();
 
   // std::println("\nLab 6 - AVL Tree Operations");
   // Lab6();
 
-  //std::println("\nLab 7 - B-tree");
-  //Lab7();
+  // std::println("\nLab 7 - B-tree");
+  // Lab7();
 
-  //std::println("\nLab 8 - Optimal Search Tree");
-  //Lab8();
+  // std::println("\nLab 8 - Optimal Search Tree");
+  // Lab8();
 
-  //std::println("\nLab 9 - OST Algorithms Comparison");
-  //Lab9();
+  // std::println("\nLab 9 - OST Algorithms Comparison");
+  // Lab9();
 
   // std::println("\nLabs 10-13 - Coding Algorithms");
   // Lab10_13();

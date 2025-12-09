@@ -1,10 +1,10 @@
 #pragma once
 
 #include <algorithm>
+#include <print>
 #include <unordered_map>
 #include <utility>
 #include <vector>
-#include <print>
 
 #include "./rs_tree.hpp"
 
@@ -216,7 +216,8 @@ class OSTreeA2 : public RSTree<T, OSTreeNode<T>> {
     }
 
     this->Add(elements[splitIndex].first);
-    auto* node = this->SearchImpl(this->root_.get(), elements[splitIndex].first);
+    auto* node =
+        this->SearchImpl(this->root_.get(), elements[splitIndex].first);
     if (node) {
       node->weight = elements[splitIndex].second;
     }

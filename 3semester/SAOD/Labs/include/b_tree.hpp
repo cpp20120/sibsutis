@@ -1,10 +1,10 @@
 #pragma once
 
+#include <algorithm>
 #include <memory>
 #include <print>
 #include <stdexcept>
 #include <vector>
-#include <algorithm>
 
 #include "./tree_types.hpp"
 
@@ -163,8 +163,7 @@ class BTree : public ITree<T> {
     }
   }
 
-  void MergeWithLeftSibling(BTreeNode* parent,
-                                     std::size_t childIndex) {
+  void MergeWithLeftSibling(BTreeNode* parent, std::size_t childIndex) {
     BTreeNode* child = parent->children[childIndex].get();
     BTreeNode* leftSibling = parent->children[childIndex - 1].get();
 
@@ -184,8 +183,7 @@ class BTree : public ITree<T> {
     parent->children.erase(parent->children.begin() + childIndex);
   }
 
-  void MergeWithRightSibling(BTreeNode* parent,
-                                      std::size_t childIndex) {
+  void MergeWithRightSibling(BTreeNode* parent, std::size_t childIndex) {
     BTreeNode* child = parent->children[childIndex].get();
     BTreeNode* rightSibling = parent->children[childIndex + 1].get();
 
@@ -205,8 +203,7 @@ class BTree : public ITree<T> {
     parent->children.erase(parent->children.begin() + childIndex + 1);
   }
 
-  void RemoveFromNode(BTreeNode* node, const T& value,
-                               bool& removed) {
+  void RemoveFromNode(BTreeNode* node, const T& value, bool& removed) {
     if (!node) return;
 
     std::size_t pos = 0;
@@ -380,22 +377,16 @@ class BTree : public ITree<T> {
     std::println();
   }
 
-  std::size_t Size() const override {
-    return size_;
-  }
+  std::size_t Size() const override { return size_; }
 
-  std::size_t Height() const override {
-    return CalculateHeight(root_.get());
-  }
+  std::size_t Height() const override { return CalculateHeight(root_.get()); }
 
   double AverageHeight() const override {
     if (size_ == 0) return 0.0;
     return static_cast<double>(Height());
   }
 
-  T Sum() const override {
-    return SumValues(root_.get());
-  }
+  T Sum() const override { return SumValues(root_.get()); }
 
   bool Contains(const T& value) const {
     return ContainsRecursive(root_.get(), value);

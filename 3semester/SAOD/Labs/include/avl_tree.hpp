@@ -1,8 +1,8 @@
 #pragma once
 
 #include <algorithm>
-#include <memory>
 #include <iostream>
+#include <memory>
 
 #include "./base_tree.hpp"
 
@@ -25,9 +25,7 @@ class AVLTree : public BaseTree<T, AVLTreeNode<T>> {
   using NodePtr = std::unique_ptr<AVLTreeNode<T>>;
 
   // Height and balance utilities
-  int GetHeight(const NodePtr& node) const {
-    return node ? node->height : 0;
-  }
+  int GetHeight(const NodePtr& node) const { return node ? node->height : 0; }
 
   int GetBalance(const NodePtr& node) const {
     return node ? GetHeight(node->left) - GetHeight(node->right) : 0;
@@ -35,7 +33,8 @@ class AVLTree : public BaseTree<T, AVLTreeNode<T>> {
 
   void UpdateHeight(NodePtr& node) {
     if (node) {
-      node->height = 1 + std::max(GetHeight(node->left), GetHeight(node->right));
+      node->height =
+          1 + std::max(GetHeight(node->left), GetHeight(node->right));
     }
   }
 
@@ -187,9 +186,7 @@ class AVLTree : public BaseTree<T, AVLTreeNode<T>> {
   }
 
   // Additional AVL-specific methods
-  bool IsBalanced() const {
-    return IsBalancedRecursive(this->root_.get());
-  }
+  bool IsBalanced() const { return IsBalancedRecursive(this->root_.get()); }
 
   int GetBalance() const {
     if (!this->root_) return 0;

@@ -77,15 +77,9 @@ class PBSTree : public BaseTree<T, TNode> {
     return SearchImpl(this->root_.get(), value);
   }
 
-  bool Contains(const T& value) const {
-    return Search(value) != nullptr;
-  }
+  bool Contains(const T& value) const { return Search(value) != nullptr; }
 
-  std::vector<T> ToVector() const {
-    return this->GetInOrderElements();
-  }
+  std::vector<T> ToVector() const { return this->GetInOrderElements(); }
 
-  bool Empty() const {
-    return this->root_ == nullptr;
-  }
+  bool Empty() const { return this->root_ == nullptr; }
 };
